@@ -3,6 +3,7 @@ package com.example.loginroomauth;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,16 +33,28 @@ public class HomeActivity extends AppCompatActivity {
         TextView nomView = findViewById(R.id.name_view);
         TextView emailView = findViewById(R.id.email_view);
         Button btnProfile = findViewById(R.id.btn_profile);
+        Button btnLstUser = findViewById(R.id.btn_lst_user);
         Button btnLogout = findViewById(R.id.btn_logout);
+
+        int count;
 
         nomView.setText("Bienvenu " + user);
         emailView.setText(email);
 
         btnProfile.setOnClickListener(v -> {
+
             if (emailView.getVisibility() == View.VISIBLE) {
                 emailView.setVisibility(View.INVISIBLE);
             } else {
                 emailView.setVisibility(View.VISIBLE);
+            }
+
+            if ("black".equals(btnProfile.getTag())) {
+                btnProfile.setBackgroundColor(Color.BLUE);
+                btnProfile.setTag("blue");
+            } else {
+                btnProfile.setBackgroundColor(Color.BLACK);
+                btnProfile.setTag("black");
             }
         });
 
@@ -52,6 +65,13 @@ public class HomeActivity extends AppCompatActivity {
             editor.apply();
 
             Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        btnLstUser.setOnClickListener(v -> {
+
+            Intent intent = new Intent(HomeActivity.this, AllUsers.class);
             startActivity(intent);
             finish();
         });
