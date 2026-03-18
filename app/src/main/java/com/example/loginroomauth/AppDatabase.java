@@ -6,8 +6,11 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import java.util.concurrent.Executor;
+
 @Database(entities = {User.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
+
 
     public abstract UserDAO userDAO();
 
@@ -18,7 +21,7 @@ public abstract class AppDatabase extends RoomDatabase {
             INSTANCE = Room.databaseBuilder(
                             context.getApplicationContext(),
                             AppDatabase.class,
-                            "my_database"      // Nom de ta base
+                            "LoginRoomAuth"      // Nom de ta base
                     )
                     .allowMainThreadQueries() // utile pour des tests simples
                     .build();

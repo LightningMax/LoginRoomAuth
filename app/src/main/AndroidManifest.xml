@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginRoomAuth">
         <activity
-            android:name=".homeActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

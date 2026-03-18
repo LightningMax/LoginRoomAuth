@@ -36,10 +36,10 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = emailInput.getText().toString().trim();
                 String password = passwordInput.getText().toString().trim();
-                String nom = nameInput.getText().toString().trim();
+                String name = nameInput.getText().toString().trim();
                 String confirmpass = confirmpasswordInput.getText().toString().trim();
 
-                User user = new User(nom, email, password);
+                User user = new User();
                 AppDatabase db = AppDatabase.getInstance(RegisterActivity.this);
                 db.userDAO().inserer(user);
 
@@ -53,8 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                saveUser(email, password, nom);
-                Toast.makeText(RegisterActivity.this, "Compte créé avec succès !", Toast.LENGTH_SHORT).show();
+                saveUser(name,email, password);
+                Toast.makeText(RegisterActivity.this, "Compte cree avec succès !", Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 finish();
