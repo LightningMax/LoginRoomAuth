@@ -40,15 +40,15 @@ public class RegisterActivity extends AppCompatActivity {
                 String confirmpass = confirmpasswordInput.getText().toString().trim();
 
                 User user = new User(nom, email, password);
-                AppDatabase db = AppDatabase.getInstance(this);
-                db.userDao().insertUser(user);
+                AppDatabase db = AppDatabase.getInstance(RegisterActivity.this);
+                db.userDAO().inserer(user);
 
                 if (email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (confirmpass != password){
+                if (!confirmpass.equals(password)){
                     Toast.makeText(RegisterActivity.this, "Confirmation incorrecte", Toast.LENGTH_SHORT).show();
                     return;
                 }

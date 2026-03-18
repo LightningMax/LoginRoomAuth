@@ -9,7 +9,6 @@ public class User {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    public String name;
-
-    public String password;
+    public User(String name, String email, String password) {
+    }
 }
